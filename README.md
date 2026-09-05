@@ -50,7 +50,7 @@ Páginas principais:
 Crie `.env.local` para desenvolvimento ou `.env.production.local` para um build local de produção:
 
 ```dotenv
-VITE_MAPBOX_TOKEN=pk_SEU_TOKEN_PUBLICO
+VITE_MAPBOX_TOKEN=
 VITE_BFF_API_BASE_URL=https://api.exemplo.com/api
 ```
 
@@ -60,7 +60,7 @@ Regras importantes:
 - Nunca utilize ou versione tokens secretos iniciados por `sk`.
 - Restrinja no painel Mapbox as URLs autorizadas para o domínio de produção e para `localhost`.
 - Configure `VITE_BFF_API_BASE_URL` com a URL base do BFF; o fallback local é `/api`.
-- O projeto contém somente um token público Mapbox (`pk`) de fallback para deploys estáticos. `VITE_MAPBOX_TOKEN`, quando configurada, tem prioridade.
+- Configure `VITE_MAPBOX_TOKEN` com um token público (`pk.`) no ambiente local e no serviço de build. Não há credencial embutida no código; sem essa configuração, os mapas interativos dependentes do Mapbox ficam indisponíveis.
 - Arquivos `.env*.local` não são versionados.
 
 ## Scripts

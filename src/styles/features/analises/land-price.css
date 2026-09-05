@@ -1,0 +1,69 @@
+.land-price-map{position:relative;overflow:visible;background:#f5f5f2;border:1px solid var(--line)}.land-price-map img{display:block;width:100%;height:auto}.map-pole{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border:0;border-radius:50%;background:rgba(182,214,92,.08);cursor:pointer;color:var(--ink);transition:background .2s,box-shadow .2s;z-index:3}.map-pole:before{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1px var(--ink)}.map-pole:hover,.map-pole:focus-visible{background:rgba(182,214,92,.4);box-shadow:0 0 0 8px rgba(182,214,92,.2);outline:none;z-index:8}.map-pole span{position:absolute;left:50%;bottom:calc(100% + 13px);width:240px;padding:16px;text-align:left;background:var(--ink);color:white;box-shadow:0 16px 40px rgba(24,32,26,.2);opacity:0;visibility:hidden;transform:translate(-50%,8px);transition:opacity .2s,transform .2s,visibility .2s;pointer-events:none}.map-pole span:after{content:"";position:absolute;left:50%;top:100%;border:7px solid transparent;border-top-color:var(--ink);transform:translateX(-50%)}.map-pole:hover span,.map-pole:focus-visible span{opacity:1;visibility:visible;transform:translate(-50%,0)}.map-pole b{display:block;color:var(--lime);font:400 9px var(--mono);margin-bottom:12px}.map-pole strong{display:block;font-size:13px;line-height:1.35;font-weight:500}.map-pole small{display:block;font:300 9px var(--mono);color:#aeb6b0;margin:8px 0 14px}.map-pole em{display:block;font:500 14px var(--mono);font-style:normal}.pole-1{left:29.2%;top:26.6%}.pole-2{left:51.1%;top:23.4%}.pole-3{left:72.2%;top:42%}.pole-4{left:70.2%;top:68.3%}.pole-5{left:60.6%;top:79%}.pole-6{left:60.5%;top:61.5%}.pole-7{left:46.4%;top:73%}
+@media(max-width:800px){.map-pole{width:38px;height:38px;margin:-19px 0 0 -19px}.map-pole:before{inset:12px}.map-pole span{position:fixed;left:20px;right:20px;bottom:20px;width:auto;transform:translateY(12px);z-index:50}.map-pole span:after{display:none}.map-pole:hover span,.map-pole:focus-visible span{transform:none}.land-price-map{overflow:hidden}}
+
+/* Cada botão cobre a extensão aproximada de seu polo no mapa. */
+.map-pole{margin:0;border-radius:0;background:transparent;box-shadow:none}
+.map-pole:before{display:none}
+.map-pole:hover,.map-pole:focus-visible{background:transparent;box-shadow:none;outline:none}
+.pole-1{left:18.5%;top:13.5%;width:21.5%;height:30%;clip-path:polygon(4% 0,94% 0,91% 11%,89% 23%,94% 37%,91% 59%,96% 76%,78% 100%,49% 96%,48% 82%,4% 81%,7% 61%,1% 42%)}
+.pole-2{left:36.5%;top:2.5%;width:45.5%;height:33%;clip-path:polygon(2% 15%,7% 0,11% 19%,15% 31%,100% 48%,96% 100%,76% 90%,64% 100%,46% 83%,28% 91%,17% 76%,4% 79%,7% 53%,0 43%)}
+.pole-3{left:64%;top:19%;width:18%;height:45%;clip-path:polygon(22% 0,100% 7%,92% 100%,61% 91%,44% 100%,31% 76%,0 70%,17% 43%,11% 24%)}
+.pole-4{left:65.5%;top:57%;width:11.5%;height:19%;clip-path:polygon(0 8%,51% 0,100% 16%,78% 100%,43% 84%,29% 59%,5% 48%)}
+.pole-5{left:54%;top:69%;width:13%;height:19%;clip-path:polygon(4% 0,84% 1%,100% 45%,75% 100%,20% 84%,0 48%)}
+.pole-6{left:49.5%;top:49%;width:20%;height:24%;clip-path:polygon(7% 0,67% 1%,100% 35%,79% 76%,58% 100%,11% 85%,18% 52%,0 29%)}
+.pole-7{left:35.5%;top:61.5%;width:21%;height:27%;clip-path:polygon(0 6%,58% 0,100% 26%,91% 73%,55% 100%,21% 89%,7% 64%)}
+.pole-8{left:23.5%;top:60%;width:20%;height:16%;clip-path:polygon(8% 0,88% 5%,100% 48%,78% 100%,4% 86%,0 28%)}
+.pole-9{left:23%;top:35%;width:27%;height:29%;clip-path:polygon(18% 0,71% 2%,100% 42%,86% 91%,52% 100%,18% 89%,0 56%)}
+.pole-10{left:38%;top:25%;width:28%;height:38%;clip-path:polygon(8% 0,48% 6%,100% 18%,80% 66%,62% 100%,27% 87%,18% 54%,0 31%)}
+.map-pole.no-data span{background:#59605b}.map-pole.no-data span:after{border-top-color:#59605b}.map-pole.no-data b{color:#d5d9d5}.map-pole.no-data em{font-size:11px;color:#d5d9d5}
+.map-pole span{left:50%;bottom:55%;z-index:20}
+@media(max-width:800px){.map-pole{margin:0}.map-pole:hover,.map-pole:focus-visible{box-shadow:none}.map-pole span{position:fixed;left:20px;right:20px;bottom:20px}}
+
+/* O mouse usa a detecção exata das regiões fechadas da imagem. */
+.land-price-map.pointer-ready .map-pole{pointer-events:none}
+.pixel-region-overlay,.map-boundary-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:2}
+.pixel-map-tooltip{position:absolute;z-index:30;width:min(620px,76vw);padding:24px;background:var(--ink);color:#fff;box-shadow:0 16px 40px rgba(24,32,26,.2);opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,calc(-100% - 16px));transition:opacity .12s;left:0;top:0}.pixel-map-tooltip.visible{opacity:1;visibility:visible}.pixel-map-tooltip b{display:block;color:var(--lime);font:400 11px var(--mono);margin-bottom:10px}.pixel-map-tooltip>strong{display:block;font-size:16px;line-height:1.35;font-weight:500;margin-bottom:19px}.tooltip-table-wrap{overflow-x:auto}.pixel-map-tooltip table{width:100%;border-collapse:collapse}.pixel-map-tooltip th,.pixel-map-tooltip td{padding:10px 14px 10px 0;border-top:1px solid rgba(255,255,255,.16);text-align:left;font:300 11.5px/1.4 var(--mono);white-space:nowrap}.pixel-map-tooltip tbody th{font-weight:400;white-space:normal}.pixel-map-tooltip thead th{color:#b6bdb8;font-size:9.5px;text-transform:uppercase}.pixel-map-tooltip td:last-child{text-align:right;font-size:12.5px;font-weight:500}.pixel-map-tooltip.no-data{background:#59605b}.pixel-map-tooltip.no-data b{color:#d5d9d5}
+@media(max-width:800px){.pixel-map-tooltip{position:fixed;left:20px!important;right:20px;top:auto!important;bottom:20px;width:auto;transform:none}}
+
+/* Dimensionamento relativo à altura disponível da tela. */
+.land-price-map{width:min(100%,90vh);aspect-ratio:3451/2394;margin-inline:auto;border:0;box-shadow:none}
+.land-price-map img{width:100%;height:100%;object-fit:fill;opacity:1;filter:none}
+.land-price-map.has-red-boundaries{width:100%;height:auto;aspect-ratio:16/9;overflow:visible;background:#fafafa}
+.land-price-map.has-red-boundaries img{object-fit:cover}
+.map-state-blur{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;transition:opacity .35s ease}
+.land-price-map.map-interacted .map-state-blur{opacity:0}
+.land-price-map.has-red-boundaries .map-pole{display:none}
+.land-price-map.has-red-boundaries .pixel-map-tooltip{max-height:calc(100dvh - 40px);overflow:auto}
+.land-price-map.has-red-boundaries.pointer-ready{cursor:default}
+.map-interaction-hint{position:absolute;z-index:12;left:50%;top:50%;padding:18px 24px;background:rgba(24,32,26,.9);color:#fff;text-align:center;pointer-events:none;transform:translate(-50%,-50%);transition:opacity .25s ease,visibility .25s ease;box-shadow:0 14px 36px rgba(24,32,26,.2)}
+.map-interaction-hint span,.map-interaction-hint small{display:block}.map-interaction-hint span{font:500 10px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}.map-interaction-hint small{margin-top:7px;color:#c8cec9;font:300 9px/1.4 var(--mono)}
+.land-price-map.map-interacted .map-interaction-hint{opacity:0;visibility:hidden}
+.land-price-map.boundaries-only .map-interaction-hint,.land-price-map.boundaries-only .map-state-blur{display:none}
+.map-cursor-label{position:absolute;z-index:24;padding:8px 10px;background:rgba(24,32,26,.92);color:#fff;pointer-events:none;opacity:0;visibility:hidden;transform:translate(12px,12px);transition:opacity .12s ease;font:500 9px/1.3 var(--mono);letter-spacing:.03em;white-space:nowrap}.map-cursor-label.visible{opacity:1;visibility:visible}
+.map-state-prompt{position:absolute;z-index:23;left:53%;top:57%;min-width:320px;padding:30px 36px;background:rgba(13,37,27,.94);color:#fff;text-align:center;pointer-events:none;opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1);box-shadow:0 0 0 1px rgba(182,214,92,.6),0 14px 38px rgba(13,37,27,.32);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1),visibility 0s linear;will-change:opacity,transform;animation:map-prompt-pulse 1.8s ease-in-out infinite}.map-state-prompt strong,.map-state-prompt small{display:block}.map-state-prompt strong{color:var(--lime);font:500 15px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase}.map-state-prompt small{margin-top:10px;color:#d8ded9;font:300 11px/1.4 var(--mono)}.map-state-prompt.hidden{opacity:0;visibility:hidden;transform:translate(-50%,-45%) scale(.965);transition:opacity .42s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1),visibility 0s linear .55s;animation:none}@keyframes map-prompt-pulse{0%,100%{box-shadow:0 0 0 1px rgba(182,214,92,.45),0 14px 38px rgba(13,37,27,.3)}50%{box-shadow:0 0 0 7px rgba(182,214,92,.12),0 18px 46px rgba(13,37,27,.42)}}
+.land-price-map.has-red-boundaries .pixel-map-tooltip>small{display:block;margin:-10px 0 18px;color:#b6bdb8;font:400 9px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase}
+.land-price-map.has-red-boundaries .pixel-map-tooltip th:last-child,.land-price-map.has-red-boundaries .pixel-map-tooltip td:last-child{text-align:right}
+.tooltip-disclaimer{margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);color:#b6bdb8;font:400 12px/1.55 var(--mono);letter-spacing:.02em}
+@media(min-width:801px){.land-price-map.has-red-boundaries .pixel-map-tooltip{position:fixed;transform:translateY(-50%);max-width:calc(100vw - 32px);max-height:calc(100dvh - 32px)}}
+.pixel-region-overlay{left:0;top:0;right:auto;bottom:auto;width:100%;height:100%}
+@media(min-width:801px) and (max-height:850px){.land-price-map{width:min(100%,82vh)}.land-price-block{padding-top:8vh;padding-bottom:13vh}.land-price-block .analysis-content header{margin-bottom:20px}}
+@media(max-width:800px){.land-price-map{width:100%}.land-price-map.has-red-boundaries{height:auto;min-height:0;overflow:hidden}.land-price-map.boundaries-only img,.land-price-map.boundaries-only .map-boundary-overlay,.land-price-map.boundaries-only .pixel-region-overlay{transform:translate3d(var(--mt-fit-x,0),var(--mt-fit-y,0),0) scale(var(--mt-fit-scale,1));transform-origin:50% 50%}.map-cursor-label{display:none}.map-state-prompt{min-width:240px;padding:22px 24px}.map-state-prompt strong{font-size:0}.map-state-prompt strong:after{content:"Toque no estado";font-size:12px}.map-interaction-hint span{font-size:0}.map-interaction-hint span:after{content:"Toque sobre o estado";font-size:10px}}
+@media(max-width:800px){.pixel-map-tooltip.mobile-price-panel{position:relative;left:auto!important;right:auto;top:auto!important;bottom:auto;width:100%;max-height:none;margin-top:14px;transform:none;box-shadow:0 14px 34px rgba(24,32,26,.16);overflow:visible}.pixel-map-tooltip.mobile-price-panel.visible{opacity:1;visibility:visible}.pixel-map-tooltip.mobile-price-panel>small{display:block;margin:-10px 0 18px;color:#b6bdb8;font:400 9px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase}.pixel-map-tooltip.mobile-price-panel th:last-child,.pixel-map-tooltip.mobile-price-panel td:last-child{text-align:right}}
+@media(max-width:800px){
+  .pixel-region-overlay.pole-transition{animation:mobile-pole-dissolve .42s cubic-bezier(.22,1,.36,1)}
+  .pixel-map-tooltip.mobile-price-panel{isolation:isolate}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition{animation:mobile-panel-enter .42s cubic-bezier(.22,1,.36,1)}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition:after{content:"";position:absolute;z-index:3;left:0;top:0;width:100%;height:2px;background:var(--lime);transform:scaleX(0);transform-origin:left;animation:mobile-pole-progress 2.6s linear forwards}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition tbody tr{opacity:0;transform:translateY(5px);animation:mobile-class-enter .34s cubic-bezier(.22,1,.36,1) forwards}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition tbody tr:nth-child(1){animation-delay:.08s}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition tbody tr:nth-child(2){animation-delay:.12s}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition tbody tr:nth-child(3){animation-delay:.16s}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition tbody tr:nth-child(4){animation-delay:.20s}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition tbody tr:nth-child(5){animation-delay:.24s}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition tbody tr:nth-child(6){animation-delay:.28s}
+  .pixel-map-tooltip.mobile-price-panel.pole-transition tbody tr:nth-child(7){animation-delay:.32s}
+}
+@keyframes mobile-pole-dissolve{0%{opacity:.18;filter:saturate(.7)}100%{opacity:1;filter:none}}
+@keyframes mobile-panel-enter{0%{opacity:.45;transform:translateY(6px)}100%{opacity:1;transform:none}}
+@keyframes mobile-class-enter{to{opacity:1;transform:none}}
+@keyframes mobile-pole-progress{to{transform:scaleX(1)}}

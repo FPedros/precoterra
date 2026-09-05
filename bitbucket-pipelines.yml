@@ -1,0 +1,60 @@
+image: node:22.12.0-alpine
+
+definitions:
+  caches:
+    npm: $HOME/.npm
+  steps:
+    build: &build
+      name: Build site
+      caches:
+        - npm
+      script:
+        - npm ci --cache $HOME/.npm --prefer-offline --no-audit --fetch-retries 5 --fetch-retry-mintimeout 20000 --fetch-retry-maxtimeout 120000
+        - npm audit --omit=optional --audit-level=high
+        - npm run build
+      artifacts:
+        - dist/**
+
+    security-scan: &security-scan
+      name: Security Scan
+      script:
+        - pipe: atlassian/git-secrets-scan:0.5.1
+
+    deploy: &deploy
+      name: Deploy to S3
+      image: amazon/aws-cli:2.34.25
+      clone:
+        enabled: false
+      script:
+        - aws --version
+        - echo "Syncing dist/ to S3"
+        - aws s3 sync dist/ s3://$AWS_S3_BUCKET_NAME/$AWS_S3_BUCKET_PREFIX --delete --region $AWS_DEFAULT_REGION --only-show-errors
+        - echo "Applying long cache to immutable assets"
+        - aws s3 cp dist/ s3://$AWS_S3_BUCKET_NAME/$AWS_S3_BUCKET_PREFIX --recursive --exclude "*" --include "assets/*" --region $AWS_DEFAULT_REGION --cache-control "public, max-age=31536000, immutable" --metadata-directive REPLACE --only-show-errors
+        - echo "Disabling cache for HTML documents"
+        - aws s3 cp dist/ s3://$AWS_S3_BUCKET_NAME/$AWS_S3_BUCKET_PREFIX --recursive --exclude "*" --include "*.html" --region $AWS_DEFAULT_REGION --content-type "text/html; charset=utf-8" --cache-control "no-cache, no-store, must-revalidate" --metadata-directive REPLACE --only-show-errors
+
+    cloudfront-invalidate: &cf-invalidate
+      name: Invalidate CloudFront
+      image: amazon/aws-cli:2.34.25
+      clone:
+        enabled: false
+      script:
+        - aws --version
+        - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --region us-east-1 --paths "/*"
+
+pipelines:
+  branches:
+    main:
+      - stage:
+          name: Scan
+          steps:
+            - step: *security-scan
+      - stage:
+          name: Build and Deploy
+          deployment: Production
+          trigger: manual
+          steps:
+            - step: *build
+            - step: *deploy
+            - step: *cf-invalidate

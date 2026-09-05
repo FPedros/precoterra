@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0D251B" />
+  <meta name="description" content="238 polos agrícolas, 8 classes de uso do solo, valores mínimo, médio e máximo em reais e em dólares por hectare — com a leitura de quem roda o campo desde 2004." />
+  <title>Preço Terra — Agrovalora</title>
+  <link rel="icon" href="/assets/brand/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/site.css" />
+  <link rel="stylesheet" href="/src/styles/pages/preco-terra.css" />
+</head>
+<body class="preco-terra-page" id="top">
+    <header class="site-header terra-site-header" data-header>
+      <a class="brand" href="/#inicio" aria-label="Agrovalora — início">
+        <img class="header-logo" src="/assets/brand/logo.png" width="575" height="84" alt="Agrovalora — Powered by Agroconsult" />
+      </a>
+
+      <button class="menu-toggle" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+        <i></i><i></i><i></i>
+      </button>
+
+      <nav class="main-nav" id="main-nav" data-nav>
+        <a href="/#inicio">Home</a>
+        <a href="/analises.html">Análises</a>
+        <a href="/preco-terra.html" aria-current="page">Preço Terra</a>
+        <!-- Blog temporariamente desativado: <a href="/blog.html">Blog</a> -->
+        <a href="/#contato">Contato</a>
+        <div class="platform-switcher">
+          <button class="nav-cta platform-switcher-trigger" type="button" aria-haspopup="true">Plataforma <span>⌄</span></button>
+          <div class="platform-switcher-menu"><a href="https://app.agrovalora.com.br"><small>Atual</small><strong>Agrovalora</strong><i>↗</i></a><a href="https://v1.agrovalora.com.br/login"><small>Legado</small><strong>Agrovalora V1</strong><i>↗</i></a></div>
+        </div>
+        <a class="mobile-nav-brand" href="/#inicio" aria-label="Agrovalora — início">
+          <img src="/assets/brand/logo.png" width="575" height="84" alt="Agrovalora — Powered by Agroconsult" />
+        </a>
+      </nav>
+    </header>
+<div class="terra-content">
+
+<main>
+<!-- HERO -->
+<header class="terra-hero"><div class="wrap">
+  <h1>Quanto vale a terra que sustenta a sua decisão?</h1>
+  <p>238 polos agrícolas, 8 classes de uso do solo, valores mínimo, médio e máximo em reais e em dólares por hectare — com a leitura de quem roda o campo desde 2004.</p>
+  <div class="cta">
+    <button class="btn btn-p btn-lg" onclick="go('planos')">Ver planos e preços</button>
+    <button class="btn btn-gh btn-lg" onclick="go('calc')">Calcular o valor de um imóvel</button>
+  </div>
+  <div class="hstats">
+    <div><b>238</b><span>polos agrícolas</span></div>
+    <div><b>8</b><span>classes de uso do solo</span></div>
+    <div><b>+10 mil</b><span>imóveis avaliados</span></div>
+    <div><b>15</b><span>anos de coleta</span></div>
+    <div><b>5.568</b><span>municípios cobertos</span></div>
+  </div>
+</div></header>
+
+<nav class="product-nav" id="nav" aria-label="Navegação do produto"><div class="wrap"><div class="nav">
+
+  <div class="links">
+    <a href="#produto">O produto</a>
+    <a href="#calc">Calculadora</a>
+    <a href="#planos">Planos</a>
+    <a href="#plataforma">Plataforma</a>
+  </div>
+  <button class="btn btn-o" onclick="openEnt()">Falar com um analista</button>
+  <button class="btn btn-p" onclick="go('planos')">Ver planos</button>
+</div></div></nav>
+
+<!-- PRODUTO -->
+<section id="produto"><div class="wrap">
+  <h2 class="sec">Dado, leitura e plataforma — nas três camadas</h2>
+  <p class="lede">A tabela dá o número. O relatório explica o porquê. A plataforma coloca os dois na mesma tela, quando você precisar.</p>
+  <div class="grid g3 section-grid">
+    <div class="card"><div class="ico">1</div><h3>Tabela de preços</h3><p>238 polos agrícolas × 8 classes de uso do solo, com mínimo, médio e máximo do levantamento corrente e as médias dos anos anteriores, em R$/ha e US$/ha.</p></div>
+    <div class="card"><div class="ico">2</div><h3>Relatório descritivo</h3><p>A leitura da Agroconsult sobre o comportamento dos preços: o que se moveu, quanto, por quê e quais polos puxaram para cima e para baixo.</p></div>
+    <div class="card"><div class="ico">3</div><h3>Plataforma de consulta</h3><p>Filtre polos e classes, cruze períodos, gere gráficos e leia o texto ao lado da tabela. No computador ou no celular.</p></div>
+  </div>
+  <div class="note"><b>O que nos separa da referência de mercado:</b> o recorte por polo é muito mais fino que o recorte regional — e entregamos mínimo e máximo, não só a média. É o piso que o banco usa para calcular garantia e o teto que o comprador precisa conhecer antes de sentar à mesa.</div>
+</div></section>
+
+<!-- CALCULADORA -->
+<section id="calc" style="background:#fff;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)"><div class="wrap">
+  <h2 class="sec">Calculadora AgroTerra</h2>
+  <p class="lede">Informe quantos hectares o imóvel tem de cada classe de uso e receba a estimativa do valor total, com a faixa mínima e máxima da região. Sem cadastro para a consulta na tela.</p>
+  <div class="calc">
+    <div class="panel">
+      <div class="row2">
+        <div class="field"><label for="uf">Estado</label><select id="uf" onchange="fillCity()"></select></div>
+        <div class="field"><label for="mun">Município</label><select id="mun" onchange="calc()"></select></div>
+      </div>
+      <label style="margin-top:8px">Área por classe de uso do solo (hectares)</label>
+      <div id="classes"></div>
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center">
+        <button class="btn btn-p" onclick="calc(true)">Calcular valor estimado</button>
+        <button class="btn btn-o" onclick="resetCalc()">Limpar</button>
+      </div>
+    </div>
+    <div class="result" aria-live="polite">
+      <div style="font-size:12px;color:#B6C6BB;letter-spacing:.08em;font-weight:600">VALOR ESTIMADO DO IMÓVEL</div>
+      <div class="big" id="rTot">R$ 0</div>
+      <div class="rng" id="rRange">Informe as áreas para calcular</div>
+      <div class="rng" id="rPolo" style="color:#9ED879;font-weight:600;font-size:12.5px;margin-top:4px"></div>
+      <div class="brk" id="rBrk"></div>
+      <div class="gate" id="gateBox">
+        <p><b style="color:#fff">Quer o detalhamento por classe, o comparativo dos últimos 3 anos e a leitura da região?</b> Informe seu e-mail corporativo e liberamos agora.</p>
+        <input type="email" id="gmail" aria-label="E-mail corporativo" placeholder="seu.nome@empresa.com.br">
+        <button class="btn btn-p" style="width:100%" onclick="gate()">Receber o detalhamento</button>
+      </div>
+      <div class="disc">Estimativa baseada na média do polo agrícola correspondente. <b>Não substitui laudo de avaliação</b> para fins de crédito, garantia ou processo judicial. Limite de 3 consultas por mês por e-mail.</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PLANOS -->
+<section id="planos"><div class="wrap">
+  <h2 class="sec">Escolha o alcance que a sua operação precisa</h2>
+  <p class="lede">Assinatura anual com pagamento mensal. Regional, Top 50 e Brasil Completo você contrata agora, direto no cartão. O Enterprise é dimensionado com um analista.</p>
+  <div class="plans" id="plans"></div>
+  <div class="anchors">
+    <div class="anchor"><b>R$ 2.500/mês</b><span>O Brasil inteiro cabe em despesa recorrente — não é projeto, não é capex.</span></div>
+    <div class="anchor"><b>R$ 126</b><span>por polo agrícola, por ano, no pacote Brasil Completo.</span></div>
+    <div class="anchor"><b>3%</b><span>do custo de um desvio de 10% na avaliação de uma garantia de R$ 10 milhões.</span></div>
+    <div class="anchor"><b>R$ 40.000</b><span>é o que custam as 4 regiões separadas. O Brasil completo custa R$ 30.000.</span></div>
+  </div>
+  <div class="plan-notes">
+  <div class="note"><b>Um laudo de avaliação cobre um imóvel só, e custa vários milhares de reais.</b> O AgroTerra dá referência de preço para o Brasil inteiro, o ano inteiro, por R$ 2.500 ao mês.</div>
+  <div class="note amber"><b>E se eu quiser só uma atualização, sem assinar o ano?</b> É possível, sob contato: R$ 8.500 no Regional, R$ 17.000 no Top 50 e R$ 25.000 no Brasil Completo. Repare que, em todos os casos, uma única atualização custa igual ou mais que o ano inteiro pago em 10 parcelas — a assinatura é sempre a escolha melhor.</div>
+  </div>
+</div></section>
+
+<!-- CALENDÁRIO -->
+<section class="dark"><div class="wrap">
+  <h2 class="sec">O ano inteiro, não duas vezes por ano</h2>
+  <div class="grid g4 section-grid">
+    <div class="card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.13)"><h3 style="color:#fff">Jan e Jul</h3><p style="color:#C0CEC3">Virada da base, com o Relatório Brasil e os relatórios regionais do seu pacote.</p></div>
+    <div class="card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.13)"><h3 style="color:#fff">Fev, Abr, Ago e Out</h3><p style="color:#C0CEC3">Carta AgroTerra: a leitura de conjuntura do mercado de terras, exclusiva de assinantes.</p></div>
+    <div class="card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.13)"><h3 style="color:#fff">Mar e Set</h3><p style="color:#C0CEC3">Webinar de leitura com o analista, com espaço para as suas perguntas.</p></div>
+    <div class="card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.13)"><h3 style="color:#fff">O ano todo</h3><p style="color:#C0CEC3">Atualização por demanda: sempre que um laudo novo entra, o polo é revisto na plataforma.</p></div>
+  </div>
+</div></section>
+
+<!-- PLATAFORMA -->
+<section id="plataforma"><div class="wrap">
+  <h2 class="sec">É assim que o dado chega até você</h2>
+  <p class="lede">Prévia do ambiente logado. A tabela do polo com a leitura do relatório ao lado, filtros por classe de uso e o gráfico da série histórica.</p>
+
+  <div class="appwin">
+    <div class="appbar"><i></i><i></i><i></i><span>app.agroterra.com.br · Agroconsult</span></div>
+    <div class="apptop">
+      <select id="fPolo" aria-label="Polo agrícola" onchange="renderApp()"></select>
+      <select id="fClasse" aria-label="Classe de uso do solo" onchange="renderApp()">
+        <option value="all">Todas as classes de uso</option>
+        <option value="0">Agricultura de alto potencial</option>
+        <option value="1">Agricultura de médio potencial</option>
+        <option value="4">Pastagem de alto suporte</option>
+        <option value="6">Reflorestamento</option>
+      </select>
+      <select id="fMoeda" aria-label="Moeda" onchange="renderApp()"><option value="BRL">R$ por hectare</option><option value="USD">US$ por hectare</option></select>
+      <div class="who">Pacote <b id="pkgName">Regional — Centro-Oeste</b><br><span style="color:#7B897F">atualizado em 12/07/2026</span></div>
+    </div>
+    <div class="appgrid">
+      <div class="appL">
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Tabela de preços por classe de uso do solo"><table id="appTbl"></table></div>
+        <div class="lockbar" id="lockbar">
+          <div><b>Você está vendo 24 dos 238 polos.</b> Os demais fazem parte do pacote Brasil Completo.</div>
+          <button class="btn btn-p" onclick="openBuy('brasil')">Liberar o Brasil</button>
+        </div>
+      </div>
+      <div class="appR">
+        <h4 id="rpTitle">Polo 10 — Médio Norte (MT)</h4>
+        <div class="meta" id="rpMeta">Sorriso · Sinop · Lucas do Rio Verde · Nova Mutum  —  levantamento de julho de 2026</div>
+        <p id="rpP1"></p>
+        <p id="rpP2"></p>
+        <div class="history-chart"><canvas id="chart" role="img" aria-label="Série de preço médio da classe de agricultura de alto potencial, em R$/ha"></canvas></div>
+        <p style="font-size:11.5px;color:var(--mut);margin-top:12px">Série de preço médio da classe de agricultura de alto potencial, em R$/ha. Valores ilustrativos.</p>
+      </div>
+    </div>
+  </div>
+  <div class="note amber"><b>Proteção do conteúdo:</b> marca d'água nominal com nome e CNPJ em toda tela e em todo export, limite mensal de exportação por usuário, login individual e registro de acesso. O relatório descritivo existe apenas dentro da plataforma — não é distribuído em PDF.</div>
+</div></section>
+
+<!-- EXTRAS -->
+<section style="background:#fff;border-top:1px solid var(--bd)"><div class="wrap">
+  <h2 class="sec">API e recortes sob medida</h2>
+  <div class="grid g2 section-grid">
+    <div class="card"><div class="ico">API</div><h3>API AgroTerra</h3><p>Plugue os dados diretamente na sua plataforma de valoração, no seu sistema de análise de crédito ou no seu BI, com token de acesso. É como instituições financeiras com carteira de crédito agrícola já consomem hoje.</p><p style="margin-top:12px;color:var(--azul);font-weight:600">Setup de R$ 15.000 + assinatura a partir de R$ 45.000/ano — inclusa no Enterprise.</p></div>
+    <div class="card"><div class="ico">+</div><h3>Vendas especiais</h3><p>Série histórica de 10 anos, preços abertos por município, recortes específicos por estado ou por classe de uso e estudos dedicados — como a análise de geração de valor na mudança de uso do solo.</p><p style="margin-top:12px;color:var(--azul);font-weight:600">Sob consulta. Fale com um analista para dimensionar o escopo.</p></div>
+  </div>
+  <div class="section-action"><button class="btn btn-p btn-lg" onclick="openEnt()">Falar com um analista</button></div>
+</div></section>
+
+</main>
+
+<!-- MODAL COMPRA -->
+<div class="ov" id="ovBuy"><div class="modal">
+  <div class="mhead"><img src="/assets/brand/logo.png" alt=""><div><div style="font-size:15px;font-weight:600" class="cf">Contratar o AgroTerra</div><div style="font-size:12px;color:#B6C6BB" id="mSub">Assinatura anual</div></div><button class="x" aria-label="Fechar" onclick="closeAll()">✕</button></div>
+  <div class="steps" id="steps"></div>
+  <div class="mbody" id="mBody"></div>
+  <div class="mfoot" id="mFoot"></div>
+</div></div>
+
+<!-- MODAL ENTERPRISE -->
+<div class="ov" id="ovEnt"><div class="modal" style="max-width:640px">
+  <div class="mhead"><img src="/assets/brand/logo.png" alt=""><div><div style="font-size:15px;font-weight:600" class="cf">Falar com um analista</div><div style="font-size:12px;color:#B6C6BB">Enterprise e vendas especiais</div></div><button class="x" aria-label="Fechar" onclick="closeAll()">✕</button></div>
+  <div class="mbody" id="entBody"></div>
+</div></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</div>
+<footer class="site-footer">
+        <div class="footer-main">
+          <div class="footer-identity">
+            <a class="footer-brand" href="/#inicio" aria-label="Agrovalora — início"><img src="/assets/brand/logo.png" width="575" height="84" loading="lazy" decoding="async" alt="Agrovalora — Powered by Agroconsult" /></a>
+          </div>
+
+          <nav class="footer-map" aria-label="Mapa do site">
+            <h3>Mapa do site</h3>
+            <div>
+              <a href="/#inicio">Início</a>
+              <a href="/#sobre">Sobre</a>
+              <a href="/#plataforma">Plataforma</a>
+              <a href="/#aplicacoes">Aplicações</a>
+              <!-- Blog temporariamente desativado: <a href="/blog.html">Blog</a> -->
+              <a href="/#contato">Contato</a>
+              <a href="/analises.html">Análises</a>
+              <a href="/politica-privacidade.html">Política de Privacidade</a>
+              <a href="https://app.agrovalora.com.br">Acessar plataforma ↗</a>
+            </div>
+          </nav>
+
+          <div class="footer-social">
+            <h3>Siga a Agroconsult</h3>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/company/agroconsult/" target="_blank" rel="noopener noreferrer" aria-label="Agroconsult no LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9v9M6 6v.01M10 18v-5a4 4 0 0 1 8 0v5M10 9v9"/></svg></a>
+              <a href="https://www.instagram.com/agroconsult_br/" target="_blank" rel="noopener noreferrer" aria-label="Agroconsult no Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+              <a href="https://www.facebook.com/agroconsult.consultoria/" target="_blank" rel="noopener noreferrer" aria-label="Agroconsult no Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h4V3h-4c-3 0-5 2-5 5v3H6v5h3v5h5v-5h4l1-5h-5V8c0-.6.4-1 1-1"/></svg></a>
+              <a href="https://agroconsult.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Site da Agroconsult"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9c-3-3-4-6-4-9s1-6 4-9Z"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Agrovalora. Todos os direitos reservados.</p>
+          <div class="footer-legal"><a href="/politica-privacidade.html">Privacidade</a><a href="#top">Voltar ao topo ↑</a></div>
+        </div>
+      </footer>
+<script type="module" src="/src/scripts/pages/preco-terra.js"></script>
+</body>
+</html>
