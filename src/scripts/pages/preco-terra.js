@@ -1,4 +1,25 @@
 import Chart from 'chart.js/auto';
+import { initSmoothScroll } from '../shared/smooth-scroll.js';
+
+const siteHeader = document.querySelector('.terra-site-header');
+const productNav = document.querySelector('.product-nav');
+const getStickyOffset = () => (siteHeader?.getBoundingClientRect().height || 0)
+  + (productNav?.getBoundingClientRect().height || 0);
+const lenis = initSmoothScroll({ anchorOffset: -getStickyOffset() });
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.16) {
+      entry.target.classList.add('visible');
+      return;
+    }
+    if (!entry.isIntersecting) entry.target.classList.remove('visible');
+  });
+}, { threshold: [0, 0.16], rootMargin: '0px 0px -10% 0px' });
+
+document.querySelectorAll('.terra-content .reveal').forEach((element) => {
+  revealObserver.observe(element);
+});
 
 // Original product prototype: all calculations and purchase/contact flows are illustrative.
 
@@ -57,10 +78,17 @@ const REL={
 const DEF=['O polo apresentou valorização no último levantamento, em linha com o comportamento médio da região. A leitura completa deste polo, com os fatores que explicam a variação e o comparativo dos últimos três anos, está disponível no relatório regional do seu pacote.','A faixa entre mínimo e máximo indica dispersão moderada entre os municípios que compõem o polo — atenção especial ao posicionamento logístico e à regularidade documental do imóvel na hora de aplicar o valor médio.'];
 
 const fmt=n=>'R$ '+Math.round(n).toLocaleString('pt-BR');
-const fmtU=n=>'US$ '+Math.round(n).toLocaleString('pt-BR');
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),3400)}
-function go(id){document.getElementById(id).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})}
-function closeAll(){document.querySelectorAll('.ov').forEach(o=>o.classList.remove('on'));document.body.style.overflow=''}
+function go(id){
+  const target=document.getElementById(id);
+  if(target)lenis.scrollTo(target,{offset:-getStickyOffset()});
+}
+function closeAll(){
+  document.querySelectorAll('.ov').forEach(o=>o.classList.remove('on'));
+  document.body.style.overflow='';
+  lenis.start();
+  lenis.resize();
+}
 document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeAll()}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
 
@@ -138,9 +166,9 @@ function renderPlans(){
 /* ───────── CHECKOUT ───────── */
 let ST={plan:'regional',regiao:'co',pay:'12x',step:0};
 const STEPS=['Pacote','Pagamento','Seus dados','Confirmação'];
-function openBuy(k){ST={plan:k,regiao:'co',pay:'12x',step:0};document.getElementById('ovBuy').classList.add('on');document.body.style.overflow='hidden';renderStep()}
+function openBuy(k){ST={plan:k,regiao:'co',pay:'12x',step:0};document.getElementById('ovBuy').classList.add('on');document.body.style.overflow='hidden';lenis.stop();renderStep()}
 function openEnt(){
-  document.getElementById('ovEnt').classList.add('on');document.body.style.overflow='hidden';
+  document.getElementById('ovEnt').classList.add('on');document.body.style.overflow='hidden';lenis.stop();
   document.getElementById('entBody').innerHTML=`
     <h3>Vamos dimensionar o escopo</h3>
     <p class="sub">Em uma conversa de 20 minutos mapeamos onde estão os seus ativos, quais polos importam para a sua decisão e qual recorte faz sentido contratar. Retornamos em até 1 dia útil.</p>
@@ -258,10 +286,8 @@ function initApp(){
 function renderApp(){
   const p=POLOS[+document.getElementById('fPolo').value];
   const cl=document.getElementById('fClasse').value;
-  const usd=document.getElementById('fMoeda').value==='USD';
-  const rate=5.42;
   const idx=cl==='all'?CLASSES.map((_,i)=>i):[+cl];
-  const f=(v)=>usd?fmtU(v/rate):fmt(v);
+  const f=(v)=>fmt(v);
   let html=`<tr><th>Classe de uso do solo</th><th>2024</th><th>2025</th><th>Mínimo 2026</th><th>Médio 2026</th><th>Máximo 2026</th></tr>`;
   idx.forEach(i=>{
     const c=CLASSES[i],b=c.v*p.f;
@@ -373,9 +399,14 @@ document.addEventListener('keydown', event => {
 enhancePrototype();
 
 // Anchor offsets follow the actual navigation height, including wrapped mobile links.
-const productNav = document.querySelector('.product-nav');
 const updateProductNavHeight = () => {
   document.body.style.setProperty('--terra-product-nav-height', `${productNav.getBoundingClientRect().height}px`);
+  if (typeof lenis.options.anchors === 'object') {
+    lenis.options.anchors.offset = -getStickyOffset();
+  }
+  lenis.resize();
 };
-new ResizeObserver(updateProductNavHeight).observe(productNav);
+const stickyResizeObserver = new ResizeObserver(updateProductNavHeight);
+stickyResizeObserver.observe(productNav);
+stickyResizeObserver.observe(siteHeader);
 updateProductNavHeight();

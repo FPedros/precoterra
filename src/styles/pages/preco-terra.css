@@ -536,3 +536,26 @@
   .terra-content .card:has(> .ico) > h3 { min-width: 0; margin-bottom: 0; }
   .terra-content .card:has(> .ico) > p { grid-column: 1 / -1; }
 }
+
+/* Slightly larger supporting copy for more comfortable reading. */
+.terra-content .terra-hero p { font-size: clamp(17px, 1.35vw, 20px); }
+.terra-content .lede { font-size: 17px; line-height: 1.7; }
+.terra-content .card p { font-size: 15.5px; line-height: 1.75; }
+.terra-content .note { font-size: 14.5px; line-height: 1.7; }
+.terra-content label { font-size: 13.5px; }
+.terra-content .classrow label,
+.terra-content .classrow span { font-size: 14px; }
+.terra-content .result .rng { font-size: 15px; }
+.terra-content .brk div,
+.terra-content .gate p { font-size: 14px; }
+.terra-content .disc { font-size: 12.5px; }
+.terra-content .plan .pyr { font-size: 12.5px; }
+.terra-content .plan li { font-size: 13.5px; }
+.terra-content .anchor span { font-size: 13.5px; }
+.terra-content .apptop .who,
+.terra-content .appbar span { font-size: 13px; }
+.terra-content td { font-size: 12px; }
+.terra-content th { font-size: 11px; }
+.terra-content .lockbar { font-size: 13.5px; }
+.terra-content .appR .meta { font-size: 12.5px; }
+.terra-content .appR p { font-size: 14px; line-height: 1.7; }
