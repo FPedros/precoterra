@@ -412,3 +412,6 @@ html.brand-in-header .system-brand{pointer-events:auto}
 .platform-switcher-menu a:last-child{border-bottom:0}.platform-switcher-menu a:hover{background:rgba(158,216,121,.1);opacity:1}
 .platform-switcher-menu small,.platform-switcher-menu strong{display:block}.platform-switcher-menu small{color:var(--lime);font:400 7px var(--mono);letter-spacing:.1em;text-transform:uppercase}.platform-switcher-menu strong{margin-top:5px;color:#f8faf7;font:500 13px var(--sans)}.platform-switcher-menu i{position:absolute;right:14px;top:50%;color:var(--lime);font-style:normal;transform:translateY(-50%)}
 @media(max-width:800px){.platform-switcher{width:100%}.platform-switcher-trigger{width:100%}.platform-switcher-menu{position:static;width:100%;max-height:0;margin-top:0;padding:0 8px;overflow:hidden;border-width:0;box-shadow:none;opacity:1;visibility:visible;transform:none;transition:max-height .35s ease,margin-top .35s ease,padding .35s ease,border-width .35s ease}.platform-switcher:focus-within .platform-switcher-menu{max-height:150px;margin-top:8px;padding:8px;border-width:1px}}
+
+/* Espaço para o link temporário da campanha em telas intermediárias. */
+@media(min-width:801px) and (max-width:1000px){.main-nav{gap:16px}}

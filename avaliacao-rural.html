@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Conheça uma nova perspectiva sobre o valor da sua terra. Experimente a calculadora Agrovalora e solicite uma avaliação para o seu imóvel rural." />
+    <meta name="theme-color" content="#0D251B" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sua terra tem valor. Descubra quanto. — Agrovalora" />
+    <meta property="og:description" content="Experimente nossa calculadora e dê o primeiro passo para conhecer o potencial do seu imóvel rural." />
+    <meta property="og:image" content="/assets/home/Fundo-poster.webp" />
+    <link rel="icon" href="/assets/brand/favicon.png" type="image/png" />
+    <link rel="preload" as="image" href="/assets/home/Fundo-poster.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/site.css?direct" />
+    <link rel="stylesheet" href="/src/styles/pages/avaliacao-rural.css?direct" />
+    <title>Avaliação Rural — Agrovalora</title>
+  </head>
+  <body class="campaign-page" id="inicio">
+    <a class="campaign-skip" href="#calculadora">Ir para a calculadora</a>
+    <header class="campaign-header campaign-container">
+      <a href="/" aria-label="Agrovalora — início"><img src="/assets/brand/logo.png" width="575" height="84" alt="Agrovalora — Powered by Agroconsult" /></a>
+      <a class="campaign-header-cta" href="#calculadora">Conhecer o valor da minha terra <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="campaign-hero" aria-labelledby="hero-title">
+        <img class="campaign-hero-image" src="/assets/home/Fundo-poster.webp" width="1920" height="1080" fetchpriority="high" alt="Vista aérea de uma paisagem rural brasileira, com áreas de vegetação e pastagem" />
+        <div class="campaign-hero-shade"></div>
+        <div class="campaign-container campaign-hero-content">
+          <div class="campaign-hero-intro">
+            <h1 id="hero-title">Sua terra<br />tem valor.<br /><em>Descubra quanto.</em></h1>
+          </div>
+          <div class="campaign-hero-form" id="calculadora" aria-label="Calculadora AgroTerra">
+            <p class="campaign-hero-form-kicker">AgroTerra / Degustação</p>
+            <noscript><p class="campaign-noscript">Ative o JavaScript para usar a calculadora ou fale com a equipe pelo e-mail <a href="mailto:agrovalora@agroconsult.com.br">agrovalora@agroconsult.com.br</a>.</p></noscript>
+            <form id="property-form" class="campaign-form">
+              <h3>Vamos conhecer sua propriedade.</h3>
+              <p class="campaign-form-intro">Comece pela localização. Depois, distribua a área conforme o uso do solo.</p>
+              <div class="campaign-fields-two">
+                <label for="property-state">Estado<select id="property-state" name="state" required><option value="">Selecione o estado</option></select></label>
+                <label for="property-city">Município<input id="property-city" name="city" list="city-suggestions" placeholder="Informe o município" maxlength="100" required disabled autocomplete="off" /><datalist id="city-suggestions"></datalist></label>
+              </div>
+              <div class="campaign-area-heading"><span>Como a área é utilizada?</span><span>Hectares (ha)</span></div>
+              <div id="primary-areas"></div>
+              <div id="additional-areas" hidden></div>
+              <button class="campaign-text-button" id="toggle-areas" type="button" aria-expanded="false" aria-controls="additional-areas">+ Adicionar outros usos do solo</button>
+              <p class="campaign-field-hint">Preencha apenas os usos presentes no imóvel. Use vírgula ou ponto para as casas decimais.</p>
+              <div class="campaign-area-total"><span>Área total informada</span><strong><span id="total-area">0</span> <small>ha</small></strong></div>
+              <p class="campaign-form-status" id="property-status" role="status" aria-live="polite"></p>
+              <button type="submit" class="campaign-button campaign-button-dark campaign-button-full">Ver minha simulação <span aria-hidden="true">↗</span></button>
+              <p class="campaign-form-note">Uma degustação da inteligência AgroTerra.</p>
+            </form>
+            <details class="campaign-kmz-offer" id="kmz">
+              <summary>
+                <span class="campaign-kmz-label">Simulação / Análise detalhada</span>
+                <strong>Quer uma análise mais detalhada?</strong>
+                <span>Envie o KMZ da sua propriedade e um de nossos analistas entrará em contato.</span>
+                <span class="campaign-kmz-action">Experimentar envio de KMZ <span aria-hidden="true">↗</span></span>
+              </summary>
+              <form class="campaign-form campaign-kmz-form" id="kmz-demo-form" autocomplete="off">
+                <p class="campaign-kmz-demo-note">Demonstração: o arquivo e os dados deste formulário não serão enviados.</p>
+                <label for="kmz-file">Arquivo da propriedade (.kmz)<input id="kmz-file" name="kmz" type="file" accept=".kmz,application/vnd.google-earth.kmz" required /></label>
+                <label for="kmz-name">Seu nome<input id="kmz-name" name="name" type="text" minlength="3" maxlength="120" placeholder="Nome completo" required /></label>
+                <div class="campaign-fields-two">
+                  <label for="kmz-email">E-mail<input id="kmz-email" name="email" type="email" maxlength="160" placeholder="voce@exemplo.com.br" required /></label>
+                  <label for="kmz-phone">WhatsApp<input id="kmz-phone" name="phone" type="tel" inputmode="tel" maxlength="24" placeholder="(00) 00000-0000" required /></label>
+                </div>
+                <p class="campaign-form-status" id="kmz-demo-status" role="status" aria-live="polite"></p>
+                <button class="campaign-button campaign-button-dark campaign-button-full" type="submit">Simular solicitação <span aria-hidden="true">↗</span></button>
+              </form>
+            </details>
+          </div>
+        </div>
+        <a class="campaign-scroll" href="#como-funciona" aria-label="Conheça como funciona"><span aria-hidden="true">↓</span> Explore uma nova perspectiva</a>
+      </section>
+
+      <section class="campaign-proof" aria-label="Inteligência AgroTerra">
+        <div class="campaign-container campaign-proof-grid">
+          <div><strong>238</strong><span>polos agrícolas na plataforma</span></div>
+          <div><strong>8</strong><span>classes de uso do solo</span></div>
+          <div class="campaign-powered"><span>Inteligência de mercado</span><strong>Agroconsult</strong></div>
+        </div>
+      </section>
+
+      <section class="campaign-process campaign-container" id="como-funciona" aria-labelledby="process-title">
+        <div class="campaign-section-label"><span>01 / O primeiro passo</span><span>Da sua terra à sua decisão</span></div>
+        <div class="campaign-process-heading"><h2 id="process-title">Menos suposição.<br /><em>Mais perspectiva.</em></h2><p>Conhecer o valor de um imóvel rural vai além da área. Localização, uso do solo e contexto de mercado fazem parte dessa leitura.</p></div>
+        <ol class="campaign-process-steps">
+          <li><span class="campaign-step-number">01</span><h3>Conte sobre a sua terra</h3><p>Informe a localização e os hectares por tipo de uso na calculadora.</p></li>
+          <li><span class="campaign-step-number">02</span><h3>Experimente uma primeira leitura</h3><p>Veja uma simulação ilustrativa e conheça a lógica por trás da avaliação.</p></li>
+          <li><span class="campaign-step-number">03</span><h3>Receba a avaliação da equipe</h3><p>Deixe seu contato. Nossa equipe recebe os dados e retorna pelo e-mail informado.</p></li>
+        </ol>
+      </section>
+
+      <section class="campaign-calculator" id="resultado" aria-labelledby="calculator-title" hidden>
+        <div class="campaign-container">
+          <div class="campaign-section-label"><span>02 / Experimente a Agrovalora</span><span>O potencial começa aqui</span></div>
+          <div class="campaign-calculator-heading"><div><p class="campaign-eyebrow">Calculadora de valor rural</p><h2 id="calculator-title">Seu imóvel, <em>em perspectiva.</em></h2></div><p>Confira a simulação e solicite a avaliação da nossa equipe.</p></div>
+          <div class="campaign-workspace">
+            <div class="campaign-form-panel">
+              <ol class="campaign-progress" aria-label="Etapas da solicitação">
+                <li data-progress="property"><span>01</span> Seu imóvel</li>
+                <li class="is-current" data-progress="contact" aria-current="step"><span>02</span> Sua avaliação</li>
+              </ol>
+              <form id="evaluation-form" class="campaign-form" hidden>
+                <button class="campaign-text-button campaign-back" id="edit-property" type="button">← Editar dados do imóvel</button>
+                <h3 tabindex="-1" id="contact-title">Sua terra merece um olhar atento.</h3>
+                <p class="campaign-form-intro">Para receber a avaliação da nossa equipe, conte como podemos falar com você.</p>
+                <p class="campaign-property-summary" id="property-summary"></p>
+                <label for="lead-name">Nome completo<input id="lead-name" name="name" required autocomplete="name" minlength="3" maxlength="120" placeholder="Como podemos chamar você?" /></label>
+                <div class="campaign-fields-two">
+                  <label for="lead-email">E-mail<input id="lead-email" name="email" type="email" required autocomplete="email" maxlength="160" placeholder="voce@exemplo.com.br" /></label>
+                  <label for="lead-phone">WhatsApp<input id="lead-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="24" placeholder="(00) 00000-0000" aria-describedby="phone-hint" /></label>
+                </div>
+                <span id="phone-hint" class="campaign-field-hint">Informe o número com DDD.</span>
+                <div class="campaign-fields-two">
+                  <label for="lead-profile">Qual é o seu perfil?<select id="lead-profile" name="profile" required><option value="">Selecione</option><option>Proprietário rural</option><option>Produtor rural</option><option>Investidor</option><option>Corretor ou consultor</option><option>Instituição financeira</option><option>Outro</option></select></label>
+                  <label for="lead-company">Empresa <span class="campaign-optional">opcional</span><input id="lead-company" name="company" autocomplete="organization" maxlength="160" placeholder="Nome da empresa" /></label>
+                </div>
+                <div class="campaign-honeypot" aria-hidden="true"><label for="lead-website">Website<input id="lead-website" name="website" tabindex="-1" autocomplete="off" /></label></div>
+                <label class="campaign-consent" for="lead-consent"><input id="lead-consent" name="consent" type="checkbox" required /><span>Li a <a href="/politica-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a> e autorizo o contato da Agrovalora sobre esta solicitação.</span></label>
+                <p class="campaign-form-status" id="lead-status" role="status" aria-live="polite"></p>
+                <button type="submit" class="campaign-button campaign-button-dark campaign-button-full" id="send-evaluation">Solicitar minha avaliação <span aria-hidden="true">↗</span></button>
+                <p class="campaign-form-note">Enviaremos o retorno para o e-mail informado.</p>
+              </form>
+
+              <div class="campaign-success" id="evaluation-success" hidden>
+                <span class="campaign-success-icon" aria-hidden="true">✓</span>
+                <p class="campaign-eyebrow">O primeiro passo está dado</p>
+                <h3 id="success-title" tabindex="-1">Seu pedido está<br />com a nossa equipe.</h3>
+                <p>Recebemos os dados do imóvel. Nossa equipe vai analisar sua solicitação e retornar pelo e-mail <strong id="success-email"></strong>.</p>
+                <p class="campaign-success-summary" id="success-summary"></p>
+                <a class="campaign-button campaign-button-dark campaign-button-full" href="/preco-terra.html">Conhecer o AgroTerra <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+
+            <aside class="campaign-preview" aria-labelledby="preview-title" aria-live="polite">
+              <div class="campaign-preview-top"><span>AgroTerra / Uma primeira perspectiva</span><span class="campaign-preview-dot" aria-hidden="true"></span></div>
+              <div class="campaign-preview-visual" aria-hidden="true"><div class="campaign-contour contour-one"></div><div class="campaign-contour contour-two"></div><div class="campaign-contour contour-three"></div><span class="campaign-cross cross-one">+</span><span class="campaign-cross cross-two">+</span><span class="campaign-visual-caption">INTELIGÊNCIA QUE ENXERGA POTENCIAL</span></div>
+              <p class="campaign-eyebrow">Seu imóvel, em perspectiva</p>
+              <h3 id="preview-title">Cada hectare<br />conta uma história.</h3>
+              <div id="preview-empty"><p class="campaign-preview-description">Localização e uso do solo são o início da leitura. Informe os dados para explorar uma simulação.</p><div class="campaign-preview-placeholder" aria-hidden="true"><span>Valor do seu imóvel</span><strong>R$ —</strong><span>Seu primeiro olhar começa ao lado.</span></div></div>
+              <div id="preview-result" hidden><p class="campaign-preview-location" id="preview-location"></p><span class="campaign-preview-value-label" id="preview-value-label">Valor ilustrativo do imóvel</span><strong class="campaign-preview-value" id="preview-value"></strong><p class="campaign-preview-range" id="preview-range"></p><div class="campaign-preview-details"><div><span>Área informada</span><strong id="preview-area"></strong></div><div><span>Usos do solo</span><strong id="preview-uses"></strong></div></div><p class="campaign-preview-description" id="preview-next">A simulação é o começo. Solicite a avaliação para uma leitura da nossa equipe sobre o seu imóvel.</p></div>
+              <p class="campaign-preview-disclaimer">Degustação com dados ilustrativos. O valor exibido não é uma avaliação real e não substitui um laudo técnico.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="campaign-details campaign-container" aria-labelledby="details-title">
+        <div><p class="campaign-eyebrow">Muito além de um número</p><h2 id="details-title">O valor está<br /><em>nos detalhes.</em></h2><a class="campaign-inline-link" href="#calculadora">Dê o primeiro passo <span aria-hidden="true">↗</span></a></div>
+        <div class="campaign-details-list"><article><span>01</span><div><h3>Localização importa</h3><p>O contexto do polo agrícola ajuda a compreender o mercado em que o seu imóvel está inserido.</p></div></article><article><span>02</span><div><h3>Cada uso, uma perspectiva</h3><p>Agricultura, pastagem e vegetação têm características diferentes. A composição da área faz parte da leitura.</p></div></article><article><span>03</span><div><h3>Dados que abrem a conversa</h3><p>A primeira simulação aproxima você da nossa inteligência. A equipe dá continuidade à análise com os dados do seu imóvel.</p></div></article></div>
+      </section>
+
+      <section class="campaign-faq campaign-container" aria-labelledby="faq-title"><p class="campaign-eyebrow">Antes de começar</p><h2 id="faq-title">Uma decisão mais clara<br />começa com boas respostas.</h2><div class="campaign-faq-list"><details><summary>O valor da calculadora já é a avaliação do meu imóvel?<span aria-hidden="true">+</span></summary><p>Não. A calculadora é uma degustação com dados ilustrativos para apresentar a experiência AgroTerra. A avaliação do seu imóvel será tratada pela nossa equipe após o envio do formulário.</p></details><details><summary>E se o meu município não tiver uma simulação?<span aria-hidden="true">+</span></summary><p>Você pode informar qualquer município brasileiro e solicitar a avaliação. Quando a localidade não está na base demonstrativa, mostramos o resumo da área, sem gerar um valor estimado.</p></details><details><summary>Como vou receber o retorno?<span aria-hidden="true">+</span></summary><p>Depois do envio, nossa equipe recebe os dados do imóvel e seus contatos para dar continuidade à solicitação. O retorno será pelo e-mail informado; o WhatsApp pode ser usado para esclarecer os dados.</p></details></div></section>
+    </main>
+
+    <footer class="campaign-footer"><div class="campaign-container"><div class="campaign-footer-top"><a href="/" aria-label="Agrovalora — início"><img src="/assets/brand/logo.png" width="575" height="84" loading="lazy" alt="Agrovalora — Powered by Agroconsult" /></a><p>Um novo olhar.<br />Mais valor para a sua terra.</p><a href="#calculadora">Comece pela sua terra <span aria-hidden="true">↗</span></a></div><div class="campaign-footer-bottom"><p>© <span id="campaign-year">2026</span> Agrovalora. Todos os direitos reservados.</p><div><a href="/">Conheça a Agrovalora</a><a href="/politica-privacidade.html">Política de Privacidade</a></div></div></div></footer>
+    <script type="module" src="/src/scripts/shared/consent.js"></script>
+    <script type="module" src="/src/scripts/pages/avaliacao-rural.js"></script>
+  </body>
+</html>

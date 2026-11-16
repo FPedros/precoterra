@@ -22,7 +22,7 @@ Site institucional multipágina da Agrovalora, construído com Vite e JavaScript
 
 ## Requisitos
 
-- Node.js 20 LTS ou superior
+- Node.js `^20.19.0 || >=22.12.0` (requisito do Vite 8; Node 22.8.0 não é compatível)
 - npm 10 ou superior
 - AWS CLI v2 para publicação manual
 - Conta Mapbox com token público para os mapas interativos
@@ -38,12 +38,67 @@ npm run dev
 
 O Vite mostrará o endereço local no terminal, normalmente `http://localhost:5173`.
 
+Se aparecer `Cannot find native binding` ou faltar `@rolldown/binding-win32-x64-msvc`,
+confirme primeiro a versão do Node com `node --version`. No Windows com NVM,
+atualize para a versão mais recente da linha 22 e reinstale incluindo as
+dependências opcionais:
+
+```powershell
+nvm install 22
+nvm use 22
+node --version
+npm ci --include=optional
+npm run dev
+```
+
+O comando `npm ci` recria `node_modules` a partir do `package-lock.json`.
+Não é necessário apagar o lockfile: ele já inclui o módulo nativo do Windows.
+
 Páginas principais:
 
 - `http://localhost:5173/`
 - `http://localhost:5173/analises.html`
 - `http://localhost:5173/preco-terra.html`
 - `http://localhost:5173/politica-privacidade.html`
+- `http://localhost:5173/avaliacao-rural.html` — página de campanha com calculadora e solicitação de avaliação.
+
+### Campanha de avaliação rural
+
+A página `avaliacao-rural.html` mostra a calculadora logo na abertura. Após a
+simulação, o visitante vê o resultado ilustrativo e informa os dados de contato
+para receber o retorno da equipe. Usa o mesmo endpoint do formulário
+institucional, `POST ${VITE_BFF_API_BASE_URL}/public/contacts`, com os campos
+`name`, `email`, `company`, `phone`, `message` e `website` (honeypot).
+O campo `message` reúne município, UF, hectares por uso do solo, perfil,
+simulação ilustrativa e os parâmetros `utm_source`, `utm_medium`,
+`utm_campaign`, `utm_content` e `utm_term` presentes no link da campanha.
+Os parâmetros de campanha ficam apenas em memória durante a visita.
+
+Exemplo de caminho para anúncios:
+`/avaliacao-rural.html?utm_source=instagram&utm_medium=paid_social&utm_campaign=avaliacao_rural`.
+
+A calculadora reutiliza a base **ilustrativa** do protótipo AgroTerra,
+compartilhada em `src/scripts/shared/valuation-data.js`. Não publica uma
+avaliação real. Todos os estados podem receber solicitações; municípios fora
+da base demonstrativa seguem para o contato sem exibir valores inventados.
+
+Para receber solicitações reais, configure `VITE_BFF_API_BASE_URL` para um BFF
+acessível e com CORS autorizado para o domínio do site. O servidor padrão do
+Vite não fornece essa API. A confirmação aparece somente após uma resposta de
+sucesso do endpoint; erros preservam os dados para nova tentativa.
+O recebimento no BFF não automatiza o preparo nem o envio da avaliação por
+e-mail: essa continuidade fica com a equipe ou com a automação do backend.
+
+A opção “Quer uma análise mais detalhada?” aparece logo abaixo da calculadora
+com seleção de arquivo KMZ e contato. Por enquanto é **somente uma simulação**:
+valida o preenchimento e mostra o fluxo, sem transmitir arquivo ou dados.
+Para ativá-la futuramente, será necessário um endpoint de upload no BFF e
+validação do arquivo no servidor.
+
+Os testes da simulação são executados com `npm test`. O link “Campanha” está
+temporariamente nos cabeçalhos para validação; os links estão marcados com
+`data-campaign-preview` para facilitar a remoção. O build já inclui sua
+entrada independente.
 
 ## Variáveis de ambiente
 

@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
         main: resolve(rootDir, 'index.html'),
         analises: resolve(rootDir, 'analises.html'),
         precoTerra: resolve(rootDir, 'preco-terra.html'),
+        avaliacaoRural: resolve(rootDir, 'avaliacao-rural.html'),
         politicaPrivacidade: resolve(rootDir, 'politica-privacidade.html'),
         // Blog temporariamente desativado:
         // blog: resolve(rootDir, 'blog.html'),

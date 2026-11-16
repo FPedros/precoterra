@@ -381,3 +381,6 @@ button{color:inherit;font:inherit}
   .reader-split,.reader-split--chart{margin-bottom:62px;gap:30px}
   .reader-split--chart{padding:28px 20px}
 }
+
+/* Espaço para o link temporário da campanha em telas intermediárias. */
+@media(min-width:801px) and (max-width:1000px){.blog-nav{gap:16px}}
